@@ -27,9 +27,9 @@ def calculate_delivery_fee(cart_value, delivery_distance, numb_items, order_time
     if 15 <= order_time.hour <= 19 and order_time.weekday() == 4:
         rush_fee = min(15, (base_fee + extra_fee + item_surcharge + bulk_fee) * 1.2)
 
-    # Free delivery for cart values > 200 Euro
+    # Free delivery for cart values >= 200 Euro
     total_fee = Decimal(base_fee) + Decimal(extra_fee) + Decimal(item_surcharge) + Decimal(bulk_fee)
-    if cart_value > 200:
+    if cart_value >= 200:
         total_fee = Decimal(0)
 
     calculated_fee = total_fee + Decimal(small_order_charge) + Decimal(rush_fee)
