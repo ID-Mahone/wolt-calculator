@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify
 from datetime import datetime
 from decimal import Decimal
-import unittest
+from dateutil import parser
+
 
 app = Flask(__name__)
 
 def calculate_delivery_fee(cart_value, delivery_distance, numb_items, order_time):
-    order_time = datetime.fromisoformat(order_time)
+    order_time = parser.parse(order_time)
     
 
     # Fee for orders less than 10€
@@ -16,15 +17,15 @@ def calculate_delivery_fee(cart_value, delivery_distance, numb_items, order_time
     base_fee = 2
 
     # Additional Fee every 500 meters above base_fee distance
-    extra_fee = max(1, ((delivery_distance - 1000) // 500))
+    extra_fee = max(0, ((delivery_distance - 1000) // 500))
 
     # Bulk fee calculation and surcharge fee
-    bulk_fee = 1.2 if numb_items > 12 else 1  
+    bulk_fee = 1.2 if numb_items > 12 else 0  
     item_surcharge = max(0, (numb_items - 5) * 0.5)
 
     # Friday rush fee
     rush_fee = 0
-    if 15 <= order_time.hour <= 19 and order_time.weekday() == 4:
+    if 15 <= order_time.hour <= 19 and order_time.weekday() == 3:
         rush_fee = min(15, (base_fee + extra_fee + item_surcharge + bulk_fee) * 1.2)
 
     # Free delivery for cart values >= 200 Euro
@@ -56,4 +57,4 @@ def calculate_delivery_fee_api():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    unittest.main()
+    app.run()
