@@ -88,7 +88,7 @@ The CalculatorTest class in test.py contains unit tests to verify the correctnes
 
 ## Running Test
 
-python test.py
+python -m unittest test_delivery_fee.py
 
 ### Error Handling
 
