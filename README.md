@@ -17,6 +17,7 @@ This Flask-based API application calculates the delivery fee based on input para
 1. Clone the repository:
 
    bash
+
    git clone <https://github.com/ID-Mahone/wolt-calculator>
 
 ### Install dependencies
@@ -32,8 +33,11 @@ The API will be accessible at 'http://127.0.0.1:5000/'
 ### API Endpoint
 
 POST /
+
 Request
+
 Method: POST
+
 Content-Type: application/json
 
 Request Body
