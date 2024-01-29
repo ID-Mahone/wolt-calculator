@@ -58,9 +58,12 @@ The calculate_delivery_fee function in app.py performs the delivery fee calculat
 
 ## Input Parameters
 
-• cart_value (float): The total value of the items in the shopping cart.
-• delivery_distance (float): The distance (in meters) to the delivery location.
-• number_items (int): The total number of items in the shopping cart.
+• cart_value (float): The total value of the items in the shopping cart. <br />
+
+• delivery_distance (float): The distance (in meters) to the delivery location.<br />
+
+• number_items (int): The total number of items in the shopping cart.<br />
+
 • order_time (str): The timestamp of the order in ISO 8601 format (e.g., "2024-01-19T16:30:00Z").
 
 ## Output
