@@ -5,17 +5,15 @@ setup(
     version='0.1.0',
     packages=find_packages(),
     install_requires=[
-        
         'flask',
         'other_dependency',
     ],
-    
     author='David Manning',
     author_email='david.manning@wolt.com',
     description='A simple delivery fee calculator backend script',
     url='https://github.com/ID-Mahone/wolt-calculator',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
