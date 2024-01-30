@@ -1,4 +1,4 @@
-<img src="./logo-wolt.png" width="150" />
+<img src="./logo-wolt.png" width="max" />
 
 
 # Delivery Fee Calculator
