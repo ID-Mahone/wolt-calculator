@@ -1,6 +1,5 @@
-<img src="https://github.com/woltapp/engineering-internship-2024/blob/main/yuhos.png?raw=true
-" width="150" />
-https://github.com/woltapp/engineering-internship-2024/blob/main/yuhos.png?raw=true
+<img src="./logo-wolt.png" width="150" />
+
 # Delivery Fee Calculator
 
 ## Overview
