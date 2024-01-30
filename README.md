@@ -1,5 +1,6 @@
-<img src="./.github/logo-wolt.png" width="150" />
-
+<img src="https://github.com/woltapp/engineering-internship-2024/blob/main/yuhos.png?raw=true
+" width="150" />
+https://github.com/woltapp/engineering-internship-2024/blob/main/yuhos.png?raw=true
 # Delivery Fee Calculator
 
 ## Overview
@@ -60,7 +61,7 @@ The API will be accessible via `http://127.0.0.1:5000`
 - Response JSON
 ```json
 {
-    "delivery_fee": 12.20
+    "delivery_fee": 00.00
 }
 ```
 
