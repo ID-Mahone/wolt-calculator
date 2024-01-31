@@ -16,7 +16,9 @@ def calculate_delivery_fee(cart_value, delivery_distance, number_items, order_ti
     base_fee = 2
 
     # Additional Fee every 500 meters above base_fee distance.
-    extra_fee = max(0, ((delivery_distance - 1000) // 500))
+    extra_fee = 0
+    if delivery_distance > 1000:
+        extra_fee = ((delivery_distance - 1001) // 500) + 1
 
     # Bulk fee calculation and surcharge fee.
     bulk_fee = 1.2 if number_items > 12 else 0
@@ -24,9 +26,9 @@ def calculate_delivery_fee(cart_value, delivery_distance, number_items, order_ti
 
     # Friday rush fee
     rush_fee = 0
-    if 15 <= order_time.hour <= 19 and order_time.weekday() == 3:
-        rush_fee = min(15, (base_fee + extra_fee +
-                       item_surcharge + bulk_fee) * 1.2)
+    if 15 <= order_time.hour <= 19 and order_time.weekday() == 4:  # Friday is represented by 4
+        total_before_rush_fee = base_fee + extra_fee + item_surcharge + bulk_fee
+        rush_fee = min(15, total_before_rush_fee * 1.2)
 
     # Free delivery for cart values >= 200 EUR.
     total_fee = Decimal(base_fee) + Decimal(extra_fee) + \
@@ -36,6 +38,10 @@ def calculate_delivery_fee(cart_value, delivery_distance, number_items, order_ti
 
     calculated_fee = total_fee + \
         Decimal(small_order_charge) + Decimal(rush_fee)
+
+    # Apply the maximum delivery fee
+
+    calculated_fee = min(calculated_fee, Decimal(15))
 
     # Return fee in EUR, rounded to two decimal places.
     return round(calculated_fee, 2)
@@ -55,6 +61,12 @@ def calculate_delivery_fee_api():
 
             if cart_value < 0 or delivery_distance < 0 or number_items < 0:
                 return jsonify({'error': 'Only positive input values'})
+
+            # Validate order_time as a valid date-time string
+            try:
+                parser.parse(order_time)
+            except ValueError:
+                return jsonify({'error': 'Invalid order_time format'})
 
             delivery_fee = calculate_delivery_fee(
                 cart_value, delivery_distance, number_items, order_time)

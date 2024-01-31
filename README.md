@@ -88,7 +88,7 @@ of the delivery fee calculation function.
 #### Test Cases
 
 - Small value, short distance, few items (Expected: 7.00).
-- Large value, long distance, many items, Friday rush (Expected: 12.20).
+- Large value, long distance, many items, Friday rush (Expected: 15.00).
 - Cart value >= 200 (Expected: 0.00 - Free delivery).
 - Order value exactly 10 euro (Expected: 2.00 - Surcharge check).
 - Order value exactly 12 euro (Expected: 10.50 - Bulk fee check).

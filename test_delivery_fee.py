@@ -10,9 +10,9 @@ class CalculatorTest(unittest.TestCase):
         result = calculate_delivery_fee(5, 800, 3, "2024-01-15T12:00:00Z")
         self.assertEqual(result, Decimal('7.00'))
 
-        # Test2: Large value, long distance, many items, friday_rush (12.20€ expected)
+        # Test2: Large value, long distance, many items, friday_rush (15.00€ expected)
         result = calculate_delivery_fee(80, 3000, 15, "2024-01-19T16:30:00Z")
-        self.assertEqual(result, Decimal('12.20'))
+        self.assertEqual(result, Decimal('15.00'))
 
         # Test3: >= 200 == free delivery (0€ expected)
         result = calculate_delivery_fee(250000, 800, 3, "2024-01-15T12:00:00Z")
